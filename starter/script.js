@@ -137,7 +137,7 @@ function getPasswordOptions() {
       basicPassword.push(chosenUpper);
     } if (chosenCharSet.length == 0) {
       alert(`you have to choose at least one option, try again`)
-      console.log(chosenCharSet);
+      // console.log(chosenCharSet);
       return;
     }
   } else {
@@ -159,12 +159,12 @@ function getRandom() {
   generatedPassword.concat(basicPassword);
   
   flatChosenCharSet = chosenCharSet.flat();
-  console.log(`new array: ${flatChosenCharSet}`);
-  console.log(`basic password ${generatedPassword}`);
+  // console.log(`new array: ${flatChosenCharSet}`);
+  // console.log(`basic password ${generatedPassword}`);
 
   for (let i = 1; i <= (lengthOfPassword - basicPassword.length); i++) {
     let randomNumber = Math.floor(Math.random() * flatChosenCharSet.length);
-    console.log(`random number ${randomNumber}`);
+    // console.log(`random number ${randomNumber}`);
     generatedPassword += flatChosenCharSet[randomNumber];
   }
   finalPassword = [...basicPassword, ...generatedPassword];
@@ -178,37 +178,41 @@ function getRandomSpecial() {
   let generatedRandomSpecial = [];
   let rI = Math.floor(Math.random() * specialCharacters.length);
   generatedRandomSpecial += specialCharacters[rI];
-  console.log('hello generated random: ' + generatedRandomSpecial);
+  // console.log('hello generated random: ' + generatedRandomSpecial);
   return generatedRandomSpecial;
 }
 function getRandomNumeric() {
   let generatedRandomNumeric = [];
   let rI = Math.floor(Math.random() * numericCharacters.length);
   generatedRandomNumeric += numericCharacters[rI];
-  console.log('hello generated numeric: ' + generatedRandomNumeric);
+  // console.log('hello generated numeric: ' + generatedRandomNumeric);
   return generatedRandomNumeric;
 }
 function getRandomLower() {
   let generatedRandomLower = [];
   let rI = Math.floor(Math.random() * lowerCasedCharacters.length);
   generatedRandomLower += lowerCasedCharacters[rI];
-  console.log('hello generated lower: ' +generatedRandomLower);
+  // console.log('hello generated lower: ' +generatedRandomLower);
   return generatedRandomLower;
 }
 function getRandomUpper() {
   let generatedRandomUpper = [];
   let rI = Math.floor(Math.random() * upperCasedCharacters.length);
   generatedRandomUpper += upperCasedCharacters[rI];
-  console.log('hello generated upper: ' + generatedRandomUpper);
+  // console.log('hello generated upper: ' + generatedRandomUpper);
   return generatedRandomUpper;
 }
 // -------------------------------------------------------------------------------------
 
 // Function to generate password with user input / only add called functions
-function generatePassword() {
-  getPasswordOptions();
-  getRandom();
+function generatePassword(password) {
+  let sg = getPasswordOptions();
+  console.log('sg ' + sg);
+  let rand = getRandom();
+  console.log('random ' + rand);
+  return rand.join('');
 }
+console.log(generatePassword.toString());
 // -------------------------------------------------------------------------------------
 // Get references to the #generate element / no need to change this code
 var generateBtn = document.querySelector('#generate');
