@@ -22,7 +22,7 @@ Password Gerenator screenshot ![screen shots confirm window](./assets/img/Screen
 
 ### Links
 Password Generator on github[https://github.com/hszilvi/password-generator-js]
-live link[]
+live link[https://peppy-centaur-3cd68d.netlify.app/]
 
 ## My_process
 At first I wrote the pseucodes to create a "to do" list before create the code.
