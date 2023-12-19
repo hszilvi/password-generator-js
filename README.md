@@ -47,6 +47,7 @@ GitHub[https://github.com/hszilvi]
 LinkedIn[https://www.linkedin.com/in/horvathszilvi/]
 
 # Sources
+Special thanks to my TA, Martin William
 https://dmitripavlutin.com/javascript-merge-arrays/
 https://dev.to/gaelgthomas/array-to-string-without-commas-in-javascript-4mg6
 https://dev.to/code_mystery/random-password-generator-using-javascript-6a

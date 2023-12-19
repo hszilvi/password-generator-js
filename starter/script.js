@@ -113,8 +113,9 @@ let chosenNumeric = [];
 let chosenLower = [];
 let chosenUpper = [];
 
+
 function getPasswordOptions() {
-  lengthOfPassword = parseInt(prompt(`How long shoud your password be? Choose a number between 8-128!`));
+  lengthOfPassword = parseInt(prompt(`How long should your password be? Choose a number between 8-128!`));
   if (lengthOfPassword >= 8 && lengthOfPassword <= 128) {
     let wantSepcial = confirm(`Do you want special characters in your password?`);
     if (wantSepcial === true) {
@@ -139,14 +140,17 @@ function getPasswordOptions() {
       chosenCharSet.push(upperCasedCharacters);
       chosenUpper = getRandomGeneral(upperCasedCharacters);
       basicPassword.push(chosenUpper);
-    } if (chosenCharSet.length == 0) {
-      alert(`You have to choose at least 1 option, try again`)
-      return;
+    } if (chosenCharSet.length === 0) {
+      alert(`You have to choose at least 1 option, try again`);
+      return false;
     }
   } else {
     alert('Try again!');
+    return false;
   }
+  return true;
 }
+
 // -------------------------------------------------------------------------------------
 // Function for getting a random element from chosenCharSet array
   // #1 flat the chosenCharSet into a new array
@@ -157,6 +161,7 @@ let flatChosenCharSet = [];
 
 let generatedPassword = [];
 let finalPassword = [];
+
 
 function getRandom() {
   generatedPassword.concat(basicPassword);  
@@ -182,13 +187,15 @@ function getRandomGeneral (arr) {
 
 // Function for generate password with user input 
 function generatePassword() {
-  const textarea = document.getElementById('password');
-  textarea.value = '';
-  let options = getPasswordOptions();
+  // if getPasswordOptions function is false it should return an empty string to avoid undefined on screen
+  if (!getPasswordOptions()) {
+    return '';
+  }
   let randomPassword = getRandom();
-  // return randomPassword an string: convert the password array into string
   return randomPassword.join('');
 }
+
+// --------------------------------------------------------------------------------------
 
 // Function to reset ALL the variables if Generate Password button is clicked 
 function reset() {
@@ -203,20 +210,23 @@ function reset() {
   flatChosenCharSet = [];
   basicPassword = [];
 }
+
 // -------------------------------------------------------------------------------------
 // Get references to the #generate element / no need to change this code
 var generateBtn = document.querySelector('#generate');
 
-// Write password to the #password input / reset function added 
+// Write password to the #password input / reset function and setTimeout added to clear the variables and the textarea
 function writePassword() {
+  var passwordText = document.querySelector("#password");
+  passwordText.value = "";
   reset();
-  var password = generatePassword();
-  console.log('solution: ' + password);
-  var passwordText = document.querySelector('#password');
-
-  passwordText.value = password;
-
+  setTimeout(function () {
+    var password = generatePassword();
+    console.log("solution: " + password);
+    passwordText.value = password;
+  }, 0);
 }
 
 // Add event listener to generate button / no need to change this code
 generateBtn.addEventListener('click', writePassword);
+
